@@ -1,0 +1,20 @@
+{
+  "outcome": "in-review",
+  "summary": "Added a single-file, responsive HTML page at index.html.",
+  "blockers": [],
+  "validation": [
+    {
+      "command": "cd /var/www/prdtest/.worktrees/test/FEAT-0001 && python3 -c \"from pathlib import Path; p=Path('index.html'); assert p.exists(); t=p.read_text(encoding='utf-8'); assert t.lstrip().lower().startswith('<!doctype html>'); assert 'zh-CN' in t; assert '<nav' in t and '</nav>' in t; assert '<main' in t and '</main>' in t; print('basic html checks: ok')\"",
+      "ok": true,
+      "notes": "Basic presence checks for doctype, language tag, and key semantic sections."
+    }
+  ],
+  "files_changed": [
+    "index.html"
+  ],
+  "commit": {
+    "created": false,
+    "message": ""
+  },
+  "notes": "Preview by opening index.html in any modern browser."
+}
