@@ -1,0 +1,5 @@
+
+# codex invoke=prompt started_at=2026-02-09T06:14:08.703Z
+# env: loaded /Users/everfly/.openclaw/.env
+# cmd: codex --dangerously-bypass-approvals-and-sandbox -C /var/www/prdtest/.worktrees/test/FEAT-0001 <PROMPT:/var/www/prdtest/.worktrees/test/FEAT-0001/.prd-autopilot/prompts/test-FEAT-0001.md bytes=2806>
+# NOTE: interactive prompt mode may not exit automatically; attach via tmux if needed.
