@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>简洁页面</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0b1220;
+        --surface: #0f1a33;
+        --text: #e6edf6;
+        --muted: #a9b7d0;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #58a6ff;
+        --accent-2: #7ee787;
+        --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        --radius: 16px;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f7f9ff;
+          --surface: #ffffff;
+          --text: #0b1220;
+          --muted: #41506b;
+          --border: rgba(2, 10, 25, 0.12);
+          --accent: #0969da;
+          --accent-2: #1a7f37;
+          --shadow: 0 14px 40px rgba(10, 20, 40, 0.12);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        line-height: 1.6;
+        color: var(--text);
+        background: radial-gradient(
+            1200px 700px at 20% 0%,
+            rgba(88, 166, 255, 0.22),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 90% 10%,
+            rgba(126, 231, 135, 0.18),
+            transparent 60%
+          ),
+          var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 54px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 680;
+        letter-spacing: 0.2px;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: var(--shadow);
+      }
+
+      nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav a {
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--muted);
+      }
+
+      nav a:hover,
+      nav a:focus-visible {
+        outline: none;
+        color: var(--text);
+        border-color: var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .hero {
+        margin-top: 26px;
+        padding: 26px 22px;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--surface) 90%, transparent);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(22px, 3.4vw, 34px);
+        line-height: 1.2;
+      }
+
+      .hero p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        max-width: 60ch;
+      }
+
+      .cta {
+        margin-top: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          135deg,
+          color-mix(in oklab, var(--accent) 22%, transparent),
+          color-mix(in oklab, var(--accent-2) 18%, transparent)
+        );
+        text-decoration: none;
+      }
+
+      .cta:focus-visible {
+        outline: 2px solid color-mix(in oklab, var(--accent) 55%, transparent);
+        outline-offset: 2px;
+      }
+
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+
+      .card {
+        grid-column: span 12;
+        padding: 16px 16px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--surface) 92%, transparent);
+      }
+
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      @media (min-width: 760px) {
+        .card {
+          grid-column: span 4;
+        }
+      }
+
+      footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        border: 1px solid var(--border);
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand" aria-label="站点标题">
+          <span class="logo" aria-hidden="true"></span>
+          <span>简洁页面</span>
+        </div>
+        <nav aria-label="页面导航">
+          <a href="#intro">简介</a>
+          <a href="#features">特点</a>
+          <a href="#usage">使用</a>
+        </nav>
+      </header>
+
+      <main class="hero" id="intro">
+        <h1>一个干净、响应式、可直接打开的 HTML 页面</h1>
+        <p>
+          这是一个单文件页面：包含基础结构、少量 CSS、美观但不复杂。可用于占位页、Demo
+          或快速原型。
+        </p>
+        <a class="cta" href="#usage">开始使用 →</a>
+
+        <section class="grid" id="features" aria-label="特点">
+          <article class="card">
+            <h2>简洁</h2>
+            <p>内容清晰，结构语义化；不依赖第三方库。</p>
+          </article>
+          <article class="card">
+            <h2>响应式</h2>
+            <p>在手机与桌面端都有合适的排版与间距。</p>
+          </article>
+          <article class="card">
+            <h2>可访问</h2>
+            <p>导航、焦点样式、对比度与语言标注更友好。</p>
+          </article>
+        </section>
+
+        <section id="usage" aria-label="使用说明">
+          <h2 style="margin: 18px 0 6px; font-size: 16px">使用说明</h2>
+          <p style="margin: 0; color: var(--muted)">
+            直接用浏览器打开 <kbd>index.html</kbd> 即可预览；也可以用任意静态服务器托管。
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 简洁页面</span>
+        <span>提示：支持浅色 / 深色主题（跟随系统设置）</span>
+      </footer>
+    </div>
+  </body>
+</html>
