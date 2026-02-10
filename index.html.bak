@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>极简页面</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      }
+      main {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      p {
+        margin: 0;
+        opacity: 0.8;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 42rem;
+        width: 100%;
+        display: grid;
+        gap: 16px;
+      }
+      .meta {
+        font-size: 14px;
+        opacity: 0.75;
+      }
+      .card {
+        border: 1px solid rgba(127, 127, 127, 0.35);
+        border-radius: 12px;
+        padding: 16px;
+      }
+      h2 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      ul {
+        margin: 0 0 12px;
+        padding-left: 18px;
+        line-height: 1.7;
+      }
+      .btn {
+        appearance: none;
+        border: 1px solid rgba(127, 127, 127, 0.35);
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      #status[data-clicked="1"] {
+        font-weight: 600;
+      }
+      .footer {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="wrap">
+        <h1>极简页面</h1>
+        <p>只包含必要的结构与排版。</p>
+        <p class="meta">更新时间：<time id="updated"></time></p>
+
+        <section class="card" aria-labelledby="sec-title">
+          <h2 id="sec-title">内容</h2>
+          <ul>
+            <li>目标：快速搭一个静态页面</li>
+            <li>组件：标题、段落、列表、按钮</li>
+            <li>状态：<span id="status">准备就绪</span></li>
+          </ul>
+          <button class="btn" type="button" id="helloBtn">点我一下</button>
+        </section>
+
+        <footer class="footer">
+          <small>© <span id="copyrightYear"></span> 极简页面 版权所有</small>
+          <br />
+          <small>提示：这是一个纯静态示例，可直接用浏览器打开。</small>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      const updated = document.getElementById("updated");
+      if (updated) {
+        updated.textContent = new Date().toLocaleString("zh-CN", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+
+      const copyrightYear = document.getElementById("copyrightYear");
+      if (copyrightYear) {
+        copyrightYear.textContent = String(new Date().getFullYear());
+      }
+
+      const helloBtn = document.getElementById("helloBtn");
+      const status = document.getElementById("status");
+      if (helloBtn && status) {
+        helloBtn.addEventListener("click", () => {
+          status.textContent = "已点击";
+          status.dataset.clicked = "1";
+        });
+      }
+    </script>
+  </body>
+</html>
