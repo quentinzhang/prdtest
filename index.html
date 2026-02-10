@@ -3,31 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>简洁页面</title>
+    <title>拾光咖啡 · 精品咖啡店</title>
+    <meta
+      name="description"
+      content="拾光咖啡：小批量烘焙、单一产地、极简空间。一杯咖啡，专注风味与温度。"
+    />
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #0b1220;
-        --surface: #0f1a33;
-        --text: #e6edf6;
-        --muted: #a9b7d0;
-        --border: rgba(255, 255, 255, 0.12);
-        --accent: #58a6ff;
-        --accent-2: #7ee787;
-        --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-        --radius: 16px;
+        --bg: #0f0c0a;
+        --surface: #15110e;
+        --text: #f5f1ea;
+        --muted: #cbbfb2;
+        --border: rgba(245, 241, 234, 0.14);
+        --accent: #d39c5a;
+        --accent-2: #9bd1a4;
+        --shadow: 0 18px 52px rgba(0, 0, 0, 0.48);
+        --radius: 18px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
       }
 
       @media (prefers-color-scheme: light) {
         :root {
-          --bg: #f7f9ff;
+          --bg: #fbf8f2;
           --surface: #ffffff;
-          --text: #0b1220;
-          --muted: #41506b;
-          --border: rgba(2, 10, 25, 0.12);
-          --accent: #0969da;
-          --accent-2: #1a7f37;
-          --shadow: 0 14px 40px rgba(10, 20, 40, 0.12);
+          --text: #1a1410;
+          --muted: #6f5d52;
+          --border: rgba(26, 20, 16, 0.12);
+          --accent: #b35c1e;
+          --accent-2: #2e7d5a;
+          --shadow: 0 18px 52px rgba(20, 10, 5, 0.12);
         }
       }
 
@@ -42,14 +48,14 @@
         line-height: 1.6;
         color: var(--text);
         background: radial-gradient(
-            1200px 700px at 20% 0%,
-            rgba(88, 166, 255, 0.22),
-            transparent 55%
+            980px 580px at 12% -10%,
+            color-mix(in oklab, var(--accent) 18%, transparent),
+            transparent 60%
           ),
           radial-gradient(
-            900px 700px at 90% 10%,
-            rgba(126, 231, 135, 0.18),
-            transparent 60%
+            860px 560px at 88% 0%,
+            color-mix(in oklab, var(--accent-2) 14%, transparent),
+            transparent 62%
           ),
           var(--bg);
       }
@@ -58,8 +64,25 @@
         color: inherit;
       }
 
+      .skip {
+        position: absolute;
+        left: -999px;
+        top: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        text-decoration: none;
+      }
+
+      .skip:focus {
+        left: 18px;
+        z-index: 10;
+      }
+
       .wrap {
-        max-width: 980px;
+        max-width: 1040px;
         margin: 0 auto;
         padding: 28px 18px 54px;
       }
@@ -75,21 +98,27 @@
         display: flex;
         gap: 10px;
         align-items: center;
-        font-weight: 680;
+        font-weight: 720;
         letter-spacing: 0.2px;
+        text-decoration: none;
       }
 
       .logo {
         width: 36px;
         height: 36px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        border-radius: 12px;
+        background: radial-gradient(
+            18px 18px at 30% 30%,
+            rgba(255, 255, 255, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(135deg, var(--accent), var(--accent-2));
         box-shadow: var(--shadow);
       }
 
       nav {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
         justify-content: flex-end;
       }
@@ -107,16 +136,27 @@
         outline: none;
         color: var(--text);
         border-color: var(--border);
-        background: rgba(255, 255, 255, 0.04);
+        background: color-mix(in oklab, var(--surface) 70%, transparent);
+      }
+
+      main {
+        margin-top: 24px;
       }
 
       .hero {
-        margin-top: 26px;
-        padding: 26px 22px;
+        padding: 26px 22px 22px;
         border: 1px solid var(--border);
         background: color-mix(in oklab, var(--surface) 90%, transparent);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero-top {
+        display: grid;
+        gap: 18px;
       }
 
       .hero h1 {
@@ -131,29 +171,90 @@
         max-width: 60ch;
       }
 
-      .cta {
+      .actions {
         margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
         display: inline-flex;
         align-items: center;
         gap: 10px;
         padding: 10px 14px;
         border-radius: 12px;
         border: 1px solid var(--border);
-        background: linear-gradient(
-          135deg,
-          color-mix(in oklab, var(--accent) 22%, transparent),
-          color-mix(in oklab, var(--accent-2) 18%, transparent)
-        );
         text-decoration: none;
       }
 
-      .cta:focus-visible {
+      .button.primary {
+        border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
+        background: linear-gradient(
+          135deg,
+          color-mix(in oklab, var(--accent) 22%, transparent),
+          color-mix(in oklab, var(--accent-2) 14%, transparent)
+        );
+      }
+
+      .button.secondary {
+        background: transparent;
+      }
+
+      .button:focus-visible {
         outline: 2px solid color-mix(in oklab, var(--accent) 55%, transparent);
         outline-offset: 2px;
       }
 
-      .grid {
-        margin-top: 18px;
+      .aside {
+        border: 1px dashed var(--border);
+        border-radius: 14px;
+        padding: 14px 14px 12px;
+        background: color-mix(in oklab, var(--surface) 86%, transparent);
+      }
+
+      .aside h2 {
+        margin: 0 0 8px;
+        font-size: 12px;
+        letter-spacing: 0.18px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .aside strong {
+        display: block;
+        font-size: 15px;
+        letter-spacing: 0.1px;
+      }
+
+      .badges {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .cards {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 12px;
@@ -161,15 +262,16 @@
 
       .card {
         grid-column: span 12;
-        padding: 16px 16px 14px;
+        padding: 14px 14px 12px;
         border-radius: 14px;
         border: 1px solid var(--border);
         background: color-mix(in oklab, var(--surface) 92%, transparent);
       }
 
-      .card h2 {
+      .card h3 {
         margin: 0 0 6px;
-        font-size: 16px;
+        font-size: 15px;
+        letter-spacing: 0.1px;
       }
 
       .card p {
@@ -177,7 +279,57 @@
         color: var(--muted);
       }
 
-      @media (min-width: 760px) {
+      .meta {
+        margin-top: 10px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--surface) 92%, transparent);
+      }
+
+      th,
+      td {
+        padding: 10px 12px;
+        text-align: left;
+      }
+
+      th {
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.2px;
+        color: var(--muted);
+        background: color-mix(in oklab, var(--surface) 84%, transparent);
+      }
+
+      tbody tr + tr td {
+        border-top: 1px solid var(--border);
+      }
+
+      td.price {
+        text-align: right;
+        white-space: nowrap;
+        font-family: var(--mono);
+      }
+
+      address {
+        font-style: normal;
+        color: var(--muted);
+      }
+
+      @media (min-width: 820px) {
+        .hero-top {
+          grid-template-columns: 1.35fr 0.65fr;
+          align-items: start;
+        }
+
         .card {
           grid-column: span 4;
         }
@@ -195,62 +347,136 @@
       }
 
       kbd {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
+        font-family: var(--mono);
         border: 1px solid var(--border);
         padding: 2px 6px;
         border-radius: 6px;
-        background: rgba(255, 255, 255, 0.04);
+        background: color-mix(in oklab, var(--surface) 70%, transparent);
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
+    <a class="skip" href="#main">跳到主要内容</a>
+    <div class="wrap" id="top">
       <header>
-        <div class="brand" aria-label="站点标题">
+        <a class="brand" href="#top" aria-label="拾光咖啡首页">
           <span class="logo" aria-hidden="true"></span>
-          <span>简洁页面</span>
-        </div>
+          <span>拾光咖啡</span>
+        </a>
         <nav aria-label="页面导航">
-          <a href="#intro">简介</a>
-          <a href="#features">特点</a>
-          <a href="#usage">使用</a>
+          <a href="#beans">豆单</a>
+          <a href="#menu">菜单</a>
+          <a href="#visit">到店</a>
         </nav>
       </header>
 
-      <main class="hero" id="intro">
-        <h1>一个干净、响应式、可直接打开的 HTML 页面</h1>
-        <p>
-          这是一个单文件页面：包含基础结构、少量 CSS、美观但不复杂。可用于占位页、Demo
-          或快速原型。
-        </p>
-        <a class="cta" href="#usage">开始使用 →</a>
+      <main id="main">
+        <section class="hero" aria-label="首页介绍">
+          <div class="hero-top">
+            <div>
+              <h1>极简空间，专注一杯精品咖啡的风味。</h1>
+              <p>
+                小批量烘焙 · 单一产地 · 当天现磨。我们把复杂留给烘焙与萃取，把简单留给你。
+              </p>
+              <div class="actions" aria-label="快捷入口">
+                <a class="button primary" href="#beans">查看当季豆单</a>
+                <a class="button secondary" href="#visit">查看到店信息</a>
+              </div>
+            </div>
 
-        <section class="grid" id="features" aria-label="特点">
-          <article class="card">
-            <h2>简洁</h2>
-            <p>内容清晰，结构语义化；不依赖第三方库。</p>
-          </article>
-          <article class="card">
-            <h2>响应式</h2>
-            <p>在手机与桌面端都有合适的排版与间距。</p>
-          </article>
-          <article class="card">
-            <h2>可访问</h2>
-            <p>导航、焦点样式、对比度与语言标注更友好。</p>
-          </article>
-        </section>
+            <aside class="aside" aria-label="今日推荐">
+              <h2>Today</h2>
+              <strong>埃塞俄比亚 · 耶加雪菲</strong>
+              <p style="margin: 8px 0 0; color: var(--muted)">
+                花香、柑橘、红茶尾韵。建议 <kbd>V60</kbd> / <kbd>冰手冲</kbd>。
+              </p>
+              <div class="badges" aria-label="标签">
+                <span class="badge">浅烘焙</span>
+                <span class="badge">清爽酸质</span>
+                <span class="badge">干净余韵</span>
+              </div>
+            </aside>
+          </div>
 
-        <section id="usage" aria-label="使用说明">
-          <h2 style="margin: 18px 0 6px; font-size: 16px">使用说明</h2>
-          <p style="margin: 0; color: var(--muted)">
-            直接用浏览器打开 <kbd>index.html</kbd> 即可预览；也可以用任意静态服务器托管。
-          </p>
+          <section class="section" id="beans" aria-label="当季豆单">
+            <h2>当季豆单</h2>
+            <div class="cards" role="list">
+              <article class="card" role="listitem">
+                <h3>埃塞俄比亚 · 耶加雪菲（花香调）</h3>
+                <p>茉莉、柠檬皮、红茶。适合手冲与冰滴。</p>
+                <div class="meta">Roast: Light · Process: Washed</div>
+              </article>
+              <article class="card" role="listitem">
+                <h3>哥伦比亚 · 慧兰（巧克力调）</h3>
+                <p>可可、焦糖、坚果。适合意式与奶咖。</p>
+                <div class="meta">Roast: Medium · Process: Washed</div>
+              </article>
+              <article class="card" role="listitem">
+                <h3>巴拿马 · 波奎特（果甜调）</h3>
+                <p>热带水果、蜂蜜、细腻酸甜。适合手冲。</p>
+                <div class="meta">Roast: Light · Process: Natural</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="menu" aria-label="菜单">
+            <h2>菜单（简版）</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">饮品</th>
+                  <th scope="col" class="price">价格</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Espresso</td>
+                  <td class="price">¥18</td>
+                </tr>
+                <tr>
+                  <td>Americano</td>
+                  <td class="price">¥22</td>
+                </tr>
+                <tr>
+                  <td>Flat White</td>
+                  <td class="price">¥32</td>
+                </tr>
+                <tr>
+                  <td>Hand Brew（V60）</td>
+                  <td class="price">¥36</td>
+                </tr>
+                <tr>
+                  <td>Cold Brew</td>
+                  <td class="price">¥34</td>
+                </tr>
+                <tr>
+                  <td>Chocolate（无咖啡因）</td>
+                  <td class="price">¥30</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin: 10px 0 0; color: var(--muted)">
+              价格与豆单可能随季节调整；到店可选单品与萃取方式。
+            </p>
+          </section>
+
+          <section class="section" id="visit" aria-label="到店信息">
+            <h2>到店信息</h2>
+            <address>
+              上海市静安区某某路 12 号（近地铁 2 号线）<br />
+              周一至周五 08:30–18:30 · 周末 09:30–19:00<br />
+              电话 <a href="tel:+862112345678">+86 21 1234 5678</a> · 邮箱
+              <a href="mailto:hello@shiguang.coffee">hello@shiguang.coffee</a>
+            </address>
+            <p style="margin: 10px 0 0; color: var(--muted)">
+              需要安静的工位？建议工作日 10:00–16:00 来店，座位更充足。
+            </p>
+          </section>
         </section>
       </main>
 
       <footer>
-        <span>© 2026 简洁页面</span>
+        <span>© 2026 拾光咖啡</span>
         <span>提示：支持浅色 / 深色主题（跟随系统设置）</span>
       </footer>
     </div>
